@@ -1,7 +1,6 @@
 package ex03_parameter;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,16 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ArrayServlet
+ * Servlet implementation class PostServlet
  */
-@WebServlet("/ArrayServlet")
-public class ArrayServlet extends HttpServlet {
+@WebServlet("/PostServlet")
+public class PostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ArrayServlet() {
+    public PostServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,23 +28,26 @@ public class ArrayServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 요청 인코딩
 		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
 		
-		response.setContentType("text/html; charset=utf-8");
+		String model = request.getParameter("model");
+		String strPrice = request.getParameter("price");
 		
-		// 요청 파라미터(배열)
-		String[] tel = request.getParameterValues("tel");
-		String[] hobbies = request.getParameterValues("hobbies");
+		int price = 0;
 		
-		response.getWriter().append("전화번호 : ").append(tel[0]+"-"+tel[1]+"-"+tel[2]).append(", 취미 : "+Arrays.toString(hobbies));
+		if(strPrice != null) {
+			price = Integer.parseInt(strPrice);
+		}
+		
+		 response.getWriter().append("모델 : " + model).append(", 가격 : " + price);		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		System.out.println("POST요청 들어옴");
 		doGet(request, response);
 	}
 
