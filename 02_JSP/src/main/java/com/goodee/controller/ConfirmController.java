@@ -56,11 +56,11 @@ public class ConfirmController extends HttpServlet {
 		// 총 가격 구하기
 		int price = 0;
 		switch(pizza) {
-		case "콤비네이션피자" : price += 20000; break;
-		case "치즈피자" : price += 15000; break;
-		case "포테이토피자" :
-		case "고구마피자" : price += 18000; break;
-		case "불고기피자" : price += 25000; break;
+		case "콤비네이션 피자" : price += 20000; break;
+		case "치즈 피자" : price += 15000; break;
+		case "포테이토 피자" :
+		case "고구마 피자" : price += 18000; break;
+		case "불고기 피자" : price += 25000; break;
 		}
 		
 		if(topping != null) {
